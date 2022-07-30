@@ -1,0 +1,7 @@
+//响应缓存配置
+{
+	"ResponseCacheOption": {
+		"Duration": 1,
+		"IgnoreVaryByQueryKeys": [ "sign", "timestamp" ]
+	}
+}

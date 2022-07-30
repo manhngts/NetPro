@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<!--<TargetFramework>$(NetCoreTargetVersion)</TargetFramework>-->
+		<TargetFrameworks>$(TargetsVersion)</TargetFrameworks>
+		<Version>$(NetProWebApi)</Version>
+		<Description>
+		</Description>
+		<PackageTags>NetPro,Api,MicroService,Swagger</PackageTags>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<WarningLevel>3</WarningLevel>
+		<PackageProjectUrl>https://github.com/LeonKou/NetPro/tree/dev_6.0/src/Library/NetPro.Web.Api</PackageProjectUrl>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>bin\Debug\$(NetCoreTargetVersion)\NetPro.WebApi.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DocumentationFile>bin\Release\$(NetCoreTargetVersion)\NetPro.WebApi.xml</DocumentationFile>
+	</PropertyGroup>
+	
+	<ItemGroup>
+	  <Compile Remove="Startup\NetProCoreStartup1000.cs" />
+	  <Compile Remove="Startup\NetProCoreStartupMin.cs" />
+	  <Compile Remove="Startup\NetProRateLimitStartup200.cs" />
+	  <Compile Remove="Startup\ResponseCacheStartup800.cs" />
+	  <Compile Remove="Startup\SignStartup600.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="$(PackageIconPath)">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="readme.md" Pack="true" PackagePath="" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'netcoreapp3.1'">
+		<!--<PackageReference Include="IdentityModel" Version="4.4.0" />-->
+		<!--<PackageReference Include="Enums.NET" Version="4.0.0" />-->
+		<!--<PackageReference Include="Serilog.Exceptions" Version="8.0.0" />-->
+		<!--<PackageReference Include="Serilog.Formatting.Compact" Version="1.1.0" />-->
+		<!--<PackageReference Include="Serilog.Settings.Configuration" Version="3.3.0" />-->
+		<!--<PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />-->
+		<!--<PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />-->
+		<!--<PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />-->
+		<!--<PackageReference Include="Serilog.Sinks.ElasticSearch" Version="8.4.1" />-->
+		<!--<PackageReference Include="Serilog.Sinks.Exceptionless" Version="3.1.2" />-->
+		<!--<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />-->
+		<!--<PackageReference Include="Serilog.Sinks.Sentry" Version="2.4.3" />-->
+		<!--<PackageReference Include="Serilog.Sinks.Seq" Version="5.1.0" />-->
+		<!--<PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />-->
+		<PackageReference Include="FluentValidation.AspNetCore" Version="10.3.6" />
+		<!--<PackageReference Include="AspNetCoreRateLimit" Version="3.2.0" />-->
+		<!--<PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="3.1.9" />-->
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\NetPro.Startup\NetPro.Startup.csproj" />
+	</ItemGroup>
+
+	<Target Name="CopyPackage" AfterTargets="Pack" Condition="'$(OS)' == 'Windows_NT' and Exists('$(SolutionDir)\PushNuget') and '$(Configuration)' == 'Release'">
+		<Copy SourceFiles="$(ProjectDir)\bin\Release\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(SolutionDir)\PushNuget" />
+		<Copy SourceFiles="$(ProjectDir)\bin\Release\$(PackageId).$(PackageVersion).snupkg" DestinationFolder="$(SolutionDir)\PushNuget" />
+	</Target>
+</Project>

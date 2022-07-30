@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<!--<TargetFramework>$(NetCoreTargetVersion)</TargetFramework>-->
+		<TargetFrameworks>$(TargetsVersion)</TargetFrameworks>
+		<Version>$(NetProResponseResult)</Version>
+		<Description>
+		</Description>
+		<AssemblyName>$(NetProResponseResultAssemblyName)</AssemblyName>
+		<!--<PackageReadmeFile>readme.md</PackageReadmeFile>-->
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="$(PackageIconPath)">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+</Project>

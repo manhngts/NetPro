@@ -1,0 +1,11 @@
+{
+	"RedisCacheOption": {
+		"Enabled": true,
+		"ConnectionString": [
+			{
+				"Key": "1", //连接串key别名，唯一
+				"Value": "127.0.0.1:6379,password=123,defaultDatabase=0,poolsize=10,preheat=20,ssl=false,writeBuffer=10240,prefix=key前辍,testcluster=false,idleTimeout=10" //别名key对应的连接串
+			}
+		]
+	}
+}

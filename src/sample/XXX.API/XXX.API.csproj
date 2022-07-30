@@ -1,0 +1,84 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<IsPackable>false</IsPackable>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>bin\Debug\$(NetCoreTargetVersion)\XXX.Api.xml</DocumentationFile>
+		<NoWarn>1701;1702;1705;1591</NoWarn>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DocumentationFile>bin\Debug\$(NetCoreTargetVersion)\XXX.Api.xml</DocumentationFile>
+		<NoWarn>1701;1702;1705;1591</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="tool\dotnet-counters">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="tool\dotnet-dump">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="tool\dotnet-gcdump">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="tool\dotnet-stack">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="tool\dotnet-trace">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="config.json\prometheus.json" />
+		<None Include="config.json\checker.Development.json" />
+		<None Include="config.json\responsecache.json" />
+		<None Include="config.json\cors.json" />
+		<None Include="config.json\zeromq.json" />
+		<None Include="config.json\connection.json" />
+		<None Include="config.json\globalization.json" />
+		<None Include="config.json\checker.json" />
+		<None Include="config.json\proxy.json" />
+		<None Include="config.json\swagger.json" />
+		<None Include="config.json\mongo.json" />
+		<None Include="config.json\redis.json" />
+		<None Include="config.json\easynetq.json" />
+		<None Include="config.json\consul.json" />
+		<None Include="config.json\mqtt.json" />
+		<None Include="config.json\tdengine.json" />
+		<None Include="config.json\serilog.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AgileConfig.Client" Version="1.6.2.1" />
+		<PackageReference Include="JWT" Version="8.9.0" />
+		<PackageReference Include="Serilog.Sinks.ElasticSearch" Version="8.4.1" />
+		<PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+		<ProjectReference Include="..\..\Library\NetPro.Checker\NetPro.Checker.csproj" />
+		<ProjectReference Include="..\..\Library\NetPro.Globalization\NetPro.Globalization.csproj" />
+		<ProjectReference Include="..\..\Library\NetPro.Prometheus\NetPro.Prometheus.csproj" />
+		<ProjectReference Include="..\..\Library\NetPro.ResponseCache\NetPro.ResponseCache.csproj" />
+		<ProjectReference Include="..\..\Library\NetPro.Serilog\NetPro.Serilog.csproj" />
+		<ProjectReference Include="..\..\Library\NetPro.Swagger\NetPro.Swagger.csproj" />
+		<ProjectReference Include="..\..\Library\NetPro.ConsulClient\NetPro.ConsulClient.csproj" />
+		<ProjectReference Include="..\..\Library\NetPro.Cors\NetPro.Cors.csproj" />
+		<!--<ProjectReference Include="..\..\Library\NetPro.Proxy\NetPro.Proxy.csproj" />-->
+		<ProjectReference Include="..\..\Library\NetPro.Utility\NetPro.Utility.csproj" />
+		<ProjectReference Include="..\..\Library\NetPro.Web.Api\NetPro.Web.Api.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!--<ProjectReference Include="..\XXX.Plugin.EasyNetQ\XXX.Plugin.EasyNetQ.csproj" />-->
+		<ProjectReference Include="..\XXX.Plugin.FreeSql\XXX.Plugin.FreeSql.csproj" />
+		<ProjectReference Include="..\XXX.Plugin.MediatR\XXX.Plugin.MediatR.csproj" />
+		<ProjectReference Include="..\XXX.Plugin.MongoDB\XXX.Plugin.MongoDB.csproj" />
+		<ProjectReference Include="..\XXX.Plugin.Redis\XXX.Plugin.Redis.csproj" />
+		<ProjectReference Include="..\XXX.Plugin.Tdengine\XXX.Plugin.Tdengine.csproj" />
+		<!--<ProjectReference Include="..\XXX.Plugin.MQTTServer\XXX.Plugin.MQTTServer.csproj" />-->
+		<ProjectReference Include="..\XXX.Plugin.FreeRedis\XXX.Plugin.FreeRedis.csproj" />
+		<!--<ProjectReference Include="..\XXX.Plugin.ZeroMQ\XXX.Plugin.ZeroMQ.csproj" />-->
+	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties config_1json_4swagger_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>

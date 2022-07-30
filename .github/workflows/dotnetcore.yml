@@ -1,0 +1,33 @@
+name: .NET Core
+
+on:
+  push:
+    branches: [ master, 'dev_6.0' ]
+  pull_request:
+    branches: [ master, 'dev_6.0' ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+        source-url: https://api.nuget.org/v3/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.NUGET_AUTH_TOKEN}}
+    - name: Install dependencies
+      run: dotnet restore src/sample/XXX.API/XXX.API.csproj
+    - name: Build
+      run: dotnet build src/sample/XXX.API/XXX.API.csproj --configuration Release --no-restore
+    - name: Test
+      run: dotnet test src/sample/XXX.API/XXX.API.csproj --no-restore --verbosity normal
+    - name: Pack
+      run: dotnet pack src/NetProMicroservice.sln --output publish -c Release
+    - name: Push Pack
+      run: dotnet nuget push publish/*.nupkg -k ${{secrets.NUGET_AUTH_TOKEN}} -s https://api.nuget.org/v3/index.json  --skip-duplicate
+      continue-on-error: true

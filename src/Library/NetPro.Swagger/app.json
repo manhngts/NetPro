@@ -1,0 +1,47 @@
+﻿{
+	"SwaggerOption": {
+		"Enabled": true,//default is true
+		"IsDarkTheme": true,
+		"MiniProfilerEnabled": false,
+		"OAuth2": {
+			"Server": "http://localhost",
+			"Scopes": [
+				{
+					"Key": "d",
+					"Value": "b"
+				}
+			]
+		},
+		"RoutePrefix": "swagger",
+		"ServerPrefix": "lu", //json endpoint
+		"Description": "this is swagger for netcore",
+		"Title": "Demo swagger",
+		"Version": "first version",
+		"TermsOfService": "netcore.com",
+		"Contact": {
+			"Email": "swagger@netcore.com",
+			"Name": "swagger",
+			"Url": "swagger@netcore.com"
+		},
+		"License": {
+			"Name": "",
+			"Url": ""
+		},
+		"Headers": [ //swagger默认头参数
+			{
+				"Name": "User",
+				"Description": "用户"
+			}
+		],
+		"Query": [ //swagger默认url公共参数
+			{
+				"Name": "sign",
+				"Description": "签名"
+			},
+			{
+				"Name": "timestamp",
+				"Description": "客户端时间戳"
+			}
+		]
+	}
+}

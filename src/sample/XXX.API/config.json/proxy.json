@@ -1,0 +1,17 @@
+//远程请求相关配置
+{	
+	"Remoting": {
+		"IBaiduProxy": { //接口定义,与代码interface一致
+			"HttpHost": "https://baidu.com/",
+			"UseParameterPropertyValidate": false,
+			"UseReturnValuePropertyValidate": false,
+			"JsonSerializeOptions": {
+				"IgnoreNullValues": true,
+				"WriteIndented": false
+			}
+		},
+		"ITaosProxy": { //接口定义，与代码interface一致
+			"HttpHost": "http://192.168.100.175:31181"
+		}
+	}
+}

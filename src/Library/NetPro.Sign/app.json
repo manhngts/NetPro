@@ -1,0 +1,19 @@
+﻿{
+	"VerifySignOption": {
+		"Enabled": false,
+		"IsDebug": true,
+		"IsForce": false, //是否强制签名
+		"ExpireSeconds": 60,
+		"CommonParameters": {
+			"TimestampName": "timestamp",
+			"AppIdName": "appid",
+			"SignName": "sign",
+			"EncryptFlag": "encryptflag"
+		},
+		"AppSecret": {
+			"AppId": {
+				"sadfsdf": "sdfsfd"
+			}
+		}
+	}
+}
